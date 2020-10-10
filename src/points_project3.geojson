@@ -1,0 +1,91 @@
+{
+  "type": "FeatureCollection",
+  "name": "points_project3",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.683081, 40.404661]},
+      "properties": {"cartodb_id": 1, "name": "point1", "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.683016, 40.404653]},
+      "properties": {"cartodb_id": 2, "name": "point1", "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.683038, 40.404596]},
+      "properties": {"cartodb_id": 3, "name": null, "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.68315, 40.4046]},
+      "properties": {"cartodb_id": 4, "name": null, "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.682968, 40.404596]},
+      "properties": {"cartodb_id": 5, "name": null, "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.683102, 40.404587]},
+      "properties": {"cartodb_id": 6, "name": null, "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.683124, 40.404498]},
+      "properties": {"cartodb_id": 7, "name": null, "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.683274, 40.404579]},
+      "properties": {"cartodb_id": 8, "name": null, "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.682973, 40.404547]},
+      "properties": {"cartodb_id": 9, "name": null, "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.682989, 40.404506]},
+      "properties": {"cartodb_id": 10, "name": null, "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.683252, 40.404559]},
+      "properties": {"cartodb_id": 11, "name": null, "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.682979, 40.404473]},
+      "properties": {"cartodb_id": 12, "name": null, "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.683081, 40.404424]},
+      "properties": {"cartodb_id": 13, "name": null, "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.683306, 40.404449]},
+      "properties": {"cartodb_id": 14, "name": null, "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.683204, 40.404363]},
+      "properties": {"cartodb_id": 15, "name": null, "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.682861, 40.404449]},
+      "properties": {"cartodb_id": 16, "name": null, "description": null}
+    },
+    {
+      "type": "Feature",
+      "geometry": {"type": "Point", "coordinates": [-3.682947, 40.404412]},
+      "properties": {"cartodb_id": 17, "name": null, "description": null}
+    }
+  ]
+}
