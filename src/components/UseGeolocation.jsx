@@ -1,7 +1,7 @@
 import React from 'react'
 import useGeolocation from 'react-hook-geolocation'
  
-const ComponentWithGeolocation = () => {
+const UseGeolocation = () => {
     const geolocation = useGeolocation({
         enableHighAccuracy: true, 
         maximumAge:         15000, 
@@ -27,4 +27,4 @@ const ComponentWithGeolocation = () => {
  
 }
 
-export default ComponentWithGeolocation
+export default UseGeolocation
