@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Component} from 'react';
 import {render} from 'react-dom';
-import MapGL, {GeolocateControl, Source, Layer} from 'react-map-gl';
-// import './app.css';
+import MapGL, {GeolocateControl, Source, Layer,Marker} from 'react-map-gl';
+
 
 
 const MAPBOX_TOKEN =
@@ -14,6 +14,29 @@ const geolocateStyle = {
   margin: 10
 };
 
+
+// const options = {
+//   enableHighAccuracy: true,
+//   timeout: 5000,
+//   maximumAge: 0
+// };
+
+// function success(pos) {
+//   const crd = pos.coords;
+
+//   console.log('Your current position is:');
+//   console.log('Latitude : ' + crd.latitude);
+//   console.log('Longitude: ' + crd.longitude);
+//   console.log('More or less ' + crd.accuracy + ' meters.');
+// };
+
+// function error(err) {
+//   console.warn('ERROR(' + err.code + '): ' + err.message);
+// };
+
+// navigator.geolocation.getCurrentPosition(success, error, options);
+
+
 export default class App extends Component {
   state = {
     viewport: {
@@ -23,6 +46,10 @@ export default class App extends Component {
       bearing: 0,
       pitch: 60
     },
+    userPosition:{
+      lat:null,
+      long:null,
+    }
     // userLocation:{
     //   longitude: null,
     //   latitude: null,
@@ -30,22 +57,54 @@ export default class App extends Component {
     
   }
 
-  componentDidMount() {
-setInterval(() => {
-   navigator.geolocation.getCurrentPosition (
-      (position) => { console.log(position.coords.longitude,position.coords.latitude) },
-      (error)    => { console.log(error) },
-      {
-        enableHighAccuracy: true,
-        timeout:            1200,
-        maximumAge:         15000
-      }
-    )
-}, 1000);
+//   componentDidMount() {
+// setInterval(() => {
+//    navigator.geolocation.getCurrentPosition (
+//       (position) => { console.log(position.coords.longitude,position.coords.latitude) },
+//       (error)    => { console.log(error) },
+//       {
+//         enableHighAccuracy: true,
+//         timeout:            1200,
+//         maximumAge:         15000
+//       }
+//     )
+// }, 1000);
    
+//   }
+  
+  
+// _onUserPositionChange = user => this.setState({viewport});
+
+
+componentDidMount() {
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(function(position) {
+      console.log("Latitude is :", position.coords.latitude);
+      console.log("Longitude is :", position.coords.longitude);
+    });
   }
-  
-  
+}
+
+
+
+// getLocation = () =>{
+//   if (navigator.geolocation) {
+//     console.log(navigator.geolocation.getCurrentPosition(this.showLongitude));
+//     // navigator.geolocation.getCurrentPosition(this.showLatitude);
+//   } else { 
+//    console.log("Geolocation is not supported by this browser.")
+//   }
+// }
+
+// showLongitude= (long) => {
+//   console.log(long.coords.longitude)
+//  return long.coords.longitude
+// }
+
+// showLatitude(lat){
+//   console.log(lat.coords.latitude)
+//  return lat.coords.longitude
+// }
 
 
   _onViewportChange = viewport => this.setState({viewport});
@@ -53,19 +112,23 @@ setInterval(() => {
   render() { 
     const {viewport} = this.state;
 
-    let position = setInterval(() => {
-      navigator.geolocation.getCurrentPosition (
-      (position) => {position.coords.longitude},
-         (error)    => { console.log(error) },
-         {
-           enableHighAccuracy: true,
-           timeout:            1200,
-           maximumAge:         15000
-         }
-       )
-   }, 1000);
+    // let position =  navigator.geolocation.getCurrentPosition (
+    //   (position) => {position.coords.longitude,position.coords.latitude },
+    //      (error)    => { console.log(error) },
+    //      {
+    //        enableHighAccuracy: true,
+    //        timeout:            1200,
+    //        maximumAge:         15000
+    //      }
+    //    )
 
+    // console.log(position)   
 
+  //   let position = setInterval(() => {
+     
+  //  }, 1000);
+
+  
 
     return (
       
@@ -83,6 +146,10 @@ setInterval(() => {
           trackUserLocation={true}
         />
 
+<Marker latitude={40.4165} longitude={-3.70256} offsetLeft={-20} offsetTop={-10}>
+          <div>You are here</div>
+        </Marker>
+
         <Source
           id="boisejson"
           type="geojson"
@@ -98,7 +165,7 @@ setInterval(() => {
           layout={{'icon-image': 'hospital-15'}}
         />
         
-    <div className="coords">{position}</div>
+ 
      
       </MapGL>
     );
