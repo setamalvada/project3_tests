@@ -14,6 +14,17 @@ const geolocateStyle = {
   margin: 10
 };
 
+// const longitud = long()  {
+//   if (navigator.geolocation) {
+//     navigator.geolocation.watchPosition(function(position) {
+      
+//       return position.coords.longitude
+//     });
+//   }
+// }
+
+
+
 
 // const options = {
 //   enableHighAccuracy: true,
@@ -47,64 +58,33 @@ export default class App extends Component {
       pitch: 60
     },
     userPosition:{
-      lat:null,
-      long:null,
+      lat:navigator.geolocation.watchPosition(function(position) {
+      console.log(position.coords.latitude)
+        return position.coords.latitude
+      }),
+      long:navigator.geolocation.watchPosition(function(position) {
+        console.log(position.coords.longitude)
+        return position.coords.longitude
+      }),
     }
-    // userLocation:{
-    //   longitude: null,
-    //   latitude: null,
-    // },
+    
     
   }
 
-//   componentDidMount() {
-// setInterval(() => {
-//    navigator.geolocation.getCurrentPosition (
-//       (position) => { console.log(position.coords.longitude,position.coords.latitude) },
-//       (error)    => { console.log(error) },
-//       {
-//         enableHighAccuracy: true,
-//         timeout:            1200,
-//         maximumAge:         15000
-//       }
-//     )
-// }, 1000);
-   
-//   }
-  
-  
-// _onUserPositionChange = user => this.setState({viewport});
-
-
-componentDidMount() {
-  if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(function(position) {
-      console.log("Latitude is :", position.coords.latitude);
-      console.log("Longitude is :", position.coords.longitude);
-    });
-  }
-}
+      
 
 
 
-// getLocation = () =>{
+// componentDidMount() {
 //   if (navigator.geolocation) {
-//     console.log(navigator.geolocation.getCurrentPosition(this.showLongitude));
-//     // navigator.geolocation.getCurrentPosition(this.showLatitude);
-//   } else { 
-//    console.log("Geolocation is not supported by this browser.")
+//     navigator.geolocation.watchPosition(function(position) {
+//       console.log("Latitude is :", position.coords.latitude);
+//       console.log("Longitude is :", position.coords.longitude);
+//     });
 //   }
 // }
 
-// showLongitude= (long) => {
-//   console.log(long.coords.longitude)
-//  return long.coords.longitude
-// }
 
-// showLatitude(lat){
-//   console.log(lat.coords.latitude)
-//  return lat.coords.longitude
-// }
 
 
   _onViewportChange = viewport => this.setState({viewport});
@@ -112,21 +92,7 @@ componentDidMount() {
   render() { 
     const {viewport} = this.state;
 
-    // let position =  navigator.geolocation.getCurrentPosition (
-    //   (position) => {position.coords.longitude,position.coords.latitude },
-    //      (error)    => { console.log(error) },
-    //      {
-    //        enableHighAccuracy: true,
-    //        timeout:            1200,
-    //        maximumAge:         15000
-    //      }
-    //    )
-
-    // console.log(position)   
-
-  //   let position = setInterval(() => {
-     
-  //  }, 1000);
+   
 
   
 
@@ -146,7 +112,7 @@ componentDidMount() {
           trackUserLocation={true}
         />
 
-<Marker latitude={40.4165} longitude={-3.70256} offsetLeft={-20} offsetTop={-10}>
+<Marker latitude={this.state.userPosition.lat} longitude={this.state.userPosition.long} offsetLeft={-20} offsetTop={-10}>
           <div>You are here</div>
         </Marker>
 
@@ -165,7 +131,7 @@ componentDidMount() {
           layout={{'icon-image': 'hospital-15'}}
         />
         
- 
+    {/* <div>{this.long}</div> */}
      
       </MapGL>
     );
